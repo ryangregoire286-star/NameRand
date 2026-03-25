@@ -73,7 +73,15 @@ int main() {
 		std::cout << "Not in Memory" << std::endl;
 	}
 
-	NameLevel(new string(*pl1), new string(*pl2));
+	if (new string(*pl1) == new string(*pl2)) {
+
+		std::cout << "Same Name..." << std::endl;
+	}
+
+	else {
+
+		NameLevel(new string(*pl1), new string(*pl2));
+	}
 	
 	system("pause > 0");
 	return 0;
