@@ -4,9 +4,15 @@
 #include <memory>
 #include <cstdlib>
 #include <ctime>
-#include <corecrt.h>
 
 using namespace std;
+
+struct Player {
+	
+	std::string playerX;
+	std::string playerY;
+
+};
 
 static std::unique_ptr<std::string> player1() {
 
@@ -54,9 +60,13 @@ static void NameLevel(std::string* name1, std::string* name2) {
 
 	for (int i = 0; i < 1; i++) {
 
+		Player player;
+		
+		player.playerX = *name1;
+		player.playerY = *name2;
 
-		PrintValue(*name1, i);
-		PrintValue(*name2, i + 1);
+		PrintValue(player.playerX, i);
+		PrintValue(player.playerY, i + 1);
 
 	}
 }
