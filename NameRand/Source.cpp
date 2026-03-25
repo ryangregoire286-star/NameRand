@@ -9,6 +9,29 @@
 
 using namespace std;
 
+class WindowTitle {
+
+public:
+
+	auto setTitle(std::string title) {
+
+		return title;
+
+	}
+
+	auto setSpaceBetween() {
+
+		return "\n";
+	}
+
+	void getTitle() {
+		
+		this->setSpaceBetween();
+		std::cout << this->setTitle("Rand | Name Picker") << std::endl;
+	}
+
+};
+
 struct Player {
 	
 	std::string playerX;
@@ -77,16 +100,18 @@ static void NameLevel(std::string* name1, std::string* name2) {
 
 	for (int i = 0; i < 1; i++) {
 
+		WindowTitle window{};
 		Timer timer;
-
 		Player player;
 		
 		player.playerX = *name1;
 		player.playerY = *name2;
 
+		window.setSpaceBetween();
 		timer.getTimerCurrent(300 * 10);
 		PrintValue(player.playerX, i);
 
+		window.setSpaceBetween();
 		timer.getTimerCurrent(500 * 10);
 		PrintValue(player.playerY, i + 1);
 
@@ -95,8 +120,7 @@ static void NameLevel(std::string* name1, std::string* name2) {
 
 int main() {
 
-
-
+	WindowTitle window{};
 	std::unique_ptr<std::string> pl1 = player1();
 	std::unique_ptr<std::string> pl2 = player2();
 
@@ -112,6 +136,10 @@ int main() {
 	}
 
 	else {
+
+
+		window.getTitle();
+		std::cout << window.setSpaceBetween();
 
 		NameLevel(new string(*pl1), new string(*pl2));
 	}
