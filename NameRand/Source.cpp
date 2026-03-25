@@ -3,6 +3,8 @@
 #include <string>
 #include <memory>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 #include <ctime>
 
 using namespace std;
@@ -56,16 +58,36 @@ static void PrintValue(std::string name, int index) {
 	std::cout << "Player " << index << " " << name << std::endl;
 }
 
+class Timer {
+
+public:
+	
+	auto getSeconds(long sec) {
+
+		return sec;
+	}
+
+	void getTimerCurrent(long sec) {
+		std::this_thread::sleep_for(std::chrono::milliseconds(this->getSeconds(sec)));
+	}
+
+};
+
 static void NameLevel(std::string* name1, std::string* name2) {
 
 	for (int i = 0; i < 1; i++) {
+
+		Timer timer;
 
 		Player player;
 		
 		player.playerX = *name1;
 		player.playerY = *name2;
 
+		timer.getTimerCurrent(300 * 10);
 		PrintValue(player.playerX, i);
+
+		timer.getTimerCurrent(500 * 10);
 		PrintValue(player.playerY, i + 1);
 
 	}
@@ -77,6 +99,7 @@ int main() {
 
 	std::unique_ptr<std::string> pl1 = player1();
 	std::unique_ptr<std::string> pl2 = player2();
+
 
 	if (!pl1 || !pl2) {
 
